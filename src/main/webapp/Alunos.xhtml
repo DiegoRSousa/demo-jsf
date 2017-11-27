@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Alunos</title>
+</h:head>
+<h:body>
+	<f:metadata>
+		<f:viewAction action="#{alunoBean.listar}"></f:viewAction>
+	</f:metadata>
+	<p:panel header="Cadastro de alunos">
+		<h:form>
+			<p:outputLabel>Nome:</p:outputLabel>
+			<p:inputText value="#{alunoBean.aluno.nome}"/>
+			<p:outputLabel>Email:</p:outputLabel>
+			<p:inputText value="#{alunoController.aluno.email}"/>
+			<p:outputLabel>Periodo</p:outputLabel>
+			<p:inputText value="#{alunoBean.aluno.periodo}"/>
+			<p:commandButton value="Adicionar" action="#{alunoBean.salvar}" update="@all"/>
+		</h:form>
+		<p:dataTable var="aluno" value="#{alunoBean.alunos}">
+			<p:column headerText="Nome">
+				<h:outputText value="#{aluno.nome}" />
+			</p:column>
+			<p:column headerText="Email">
+				<h:outputText value="#{aluno.email}"/>
+			</p:column>
+			<p:column headerText="Período">
+				<h:outputText value="#{aluno.periodo}"/>
+			</p:column>
+		</p:dataTable>
+	</p:panel>
+</h:body>
+</html>
